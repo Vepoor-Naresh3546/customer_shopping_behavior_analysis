@@ -157,3 +157,14 @@ Run queries from PG Local.session.sql
 4. Power BI
 Open .pbix file in Power BI Desktop
 Refresh dataset
+📌 Key Insights
+Subscription customers generally generate higher revenue
+Discounts attract customers but don’t always reduce spending
+Loyal customers contribute significantly to total revenue
+Certain products dominate within categories
+📬 Contact
+
+Name: V. Naresh
+Skills: Python, SQL, Pandas, Power BI
+
+⭐ Conclusion
