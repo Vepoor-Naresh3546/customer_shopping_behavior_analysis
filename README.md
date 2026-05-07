@@ -1,170 +1,66 @@
 # customer_shopping_behavior_analysis
-📂 Project Structure
-customer_shopping_behavior_analysis/
-│── customer_shopping_behavior.csv   # Raw dataset
-│── PG Local.session.sql             # SQL queries for analysis
-│── customers.py                     # Python data processing script
-│── customer_behavior_dashboard.pbix # Power BI dashboard
-│── README.md                        # Project documentation
-📊 Dataset Information
-Dataset Name: Customer Shopping Behavior Dataset
-Format: CSV
-Records: Customer transactions data
-🔗 Raw Dataset Link
+👨🏻‍💻Customer Behavior Data Analyst Portfolio Project
+This project represents a complete, industry standard, end-to-end data analytics workflow, designed to mirror the real responsibilities of professional analysts in modern business environments. The project encompasses all critical stages of data analysis, from data preparation and modeling to insight generation, visualization, and reporting.
 
-If you want to download the dataset separately:
-👉 https://www.kaggle.com/datasets (search: customer shopping behavior dataset)
+This project is perfect for:
 
-🧾 Key Columns
-customer_id – Unique customer identifier
-gender – Male/Female
-age_group – Age category
-item_purchased – Product name
-category – Product category
-purchase_amount – Amount spent
-review_rating – Product rating
-shipping_type – Standard/Express
-discount_applied – Yes/No
-subscription_status – Subscribed/Not Subscribed
-previous_purchases – Number of past purchases
-⚙️ Tools & Technologies Used
-SQL (PostgreSQL) – Data analysis
-Python (Pandas) – Data loading & preprocessing
-Power BI – Data visualization & dashboard
-🧠 SQL Analysis & Solutions
-Q1. Total revenue by gender
-SELECT gender, SUM(purchase_amount) AS revenue
-FROM customer
-GROUP BY gender;
+📊 Data Analyst aspirants who want to build a strong Portfolio Project for interviews and LinkedIn
+📚 Anyone learning Python, SQL, and Power BI
+💼 Professionals preparing for interviews in Data Analytics, Data Science or Product Analytics roles
+📌 Project Overview
+The goal of this project is to simulate a corporate-grade end-to-end data analytics workflow, demonstrating the ability to translate raw data into strategic business intelligence by:
 
-✔️ Insight: Helps compare spending behavior between male and female customers.
+✅ Data Preparation,Modeling & Exploratory Data Analysis (Python): Clean and transform the raw dataset for analysis.
 
-Q2. Customers who used discount but spent above average
-SELECT customer_id, purchase_amount
-FROM customer
-WHERE discount_applied = 'Yes'
-AND purchase_amount >= (
-    SELECT AVG(purchase_amount) FROM customer
-);
+✅ Data Analysis (SQL): Simulate business transactions, and run queries to extract insights on customer segments, loyalty, and purchase drivers.
 
-✔️ Insight: Identifies high-value customers even after discounts.
+✅ Visualization & Insights (Power BI): Build an interactive dashboard that highlights key patterns and trends, enabling stakeholders to make data-driven decisions.
 
-Q3. Top 5 products by average rating
-SELECT item_purchased, ROUND(AVG(review_rating::numeric),2)
-FROM customer
-GROUP BY item_purchased
-ORDER BY AVG(review_rating) DESC
-LIMIT 5;
+✅ Report and Presentation: Write a clear project report summarizing your key findings and business recommendations. Prepare a presentation that visually communicates insights and actionable recommendations to stakeholders.
 
-✔️ Insight: Highlights best-performing products.
+Project Workflow
 
-Q4. Average purchase: Standard vs Express shipping
-SELECT shipping_type, ROUND(AVG(purchase_amount),2)
-FROM customer
-WHERE shipping_type IN ('Standard', 'Express')
-GROUP BY shipping_type;
+🛠️ How to Use This Project
+Clone the repository
 
-✔️ Insight: Shows how shipping choice impacts spending.
+git clone https://github.com/amlanmohanty1/customer-trends-data-analysis-SQL-Python-PowerBI.git
+cd customer-trends-data-analysis-SQL-Python-PowerBI
+Open Customer_Shopping_Behavior_Analysis.ipynb notebook
 
-Q5. Do subscribed customers spend more?
-SELECT subscription_status,
-COUNT(customer_id),
-ROUND(AVG(purchase_amount),2),
-ROUND(SUM(purchase_amount),2)
-FROM customer
-GROUP BY subscription_status;
+This file contains:
 
-✔️ Insight: Measures value of subscription model.
+Data Import
 
-Q6. Products with highest discount usage %
-SELECT item_purchased,
-ROUND(SUM(CASE WHEN discount_applied='Yes' THEN 1 ELSE 0 END)/COUNT(*),2)
-FROM customer
-GROUP BY item_purchased
-ORDER BY 1 DESC
-LIMIT 5;
+Data exploration
 
-✔️ Insight: Identifies products heavily dependent on discounts.
+Data cleaning
 
-Q7. Customer segmentation
-WITH customer_type AS (
-  SELECT customer_id, previous_purchases,
-  CASE
-    WHEN previous_purchases = 1 THEN 'New'
-    WHEN previous_purchases BETWEEN 2 AND 10 THEN 'Returning'
-    ELSE 'Loyal'
-  END AS customer_segment
-  FROM customer
-)
-SELECT customer_segment, COUNT(*)
-FROM customer_type
-GROUP BY customer_segment;
+Connection to SQL Database
 
-✔️ Insight: Segments customers into lifecycle stages.
+Load the data from Python notebook into MySQL/PostgreSQL/MS SQL Server
 
-Q8. Top 3 products in each category
-WITH item_counts AS (
-  SELECT category, item_purchased,
-  COUNT(*) AS total_orders,
-  ROW_NUMBER() OVER (PARTITION BY category ORDER BY COUNT(*) DESC) AS rank
-  FROM customer
-  GROUP BY category, item_purchased
-)
-SELECT * FROM item_counts WHERE rank <= 3;
+Create a database in SQL
 
-✔️ Insight: Finds best-selling items per category.
+Run Python code to load data into SQL database
 
-Q9. Repeat buyers vs subscription
-SELECT subscription_status, COUNT(*)
-FROM customer
-WHERE previous_purchases > 5
-GROUP BY subscription_status;
+Open customer_behavior_sql_queries.sql
 
-✔️ Insight: Checks if loyal customers tend to subscribe.
+Answer Business Questions using SQL Queries
 
-Q10. Revenue contribution by age group
-SELECT age_group, SUM(purchase_amount)
-FROM customer
-GROUP BY age_group
-ORDER BY 2 DESC;
+Connect the SQL Database to Power BI
 
-✔️ Insight: Identifies highest revenue-generating age segments.
+Open customer_behavior_dashboard.pbix
 
-🐍 Python Usage
+Create interactive dashboard in Power BI
 
-The customers.py file is used to:
+Create Project Report and Presentation
 
-Load CSV dataset using Pandas
-Clean and preprocess data
-Connect to PostgreSQL (via SQLAlchemy)
-📈 Power BI Dashboard
+Create project report
 
-The .pbix file contains:
+Build presentation deck using Gamma AI
 
-Revenue analysis
-Customer segmentation visuals
-Product performance insights
-Interactive filters (gender, category, age group)
-🚀 How to Run the Project
-1. Python Setup
-pip install pandas sqlalchemy psycopg2-binary
-2. Load Data
-import pandas as pd
-df = pd.read_csv("customer_shopping_behavior.csv")
-3. SQL Setup
-Import dataset into PostgreSQL
-Run queries from PG Local.session.sql
-4. Power BI
-Open .pbix file in Power BI Desktop
-Refresh dataset
-📌 Key Insights
-Subscription customers generally generate higher revenue
-Discounts attract customers but don’t always reduce spending
-Loyal customers contribute significantly to total revenue
-Certain products dominate within categories
-📬 Contact
+Follow along with the YouTube video for full walkthrough. 👨‍💼
 
-Name: V. Naresh
-Skills: Python, SQL, Pandas, Power BI
+📜 License
+MIT — feel free to fork, star, and use in your portfolio.
 
-⭐ Conclusion
