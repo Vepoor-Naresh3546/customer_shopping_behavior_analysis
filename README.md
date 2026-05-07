@@ -26,7 +26,7 @@ The goal of this project is to simulate a corporate-grade end-to-end data analyt
    git clone https://github.com/amlanmohanty1/customer-trends-data-analysis-SQL-Python-PowerBI.git
    cd customer-trends-data-analysis-SQL-Python-PowerBI
    ```
-2. **Open Customer_Shopping_Behavior_Analysis.ipynb notebook**
+2. **Open Customer.py**
 
     This file contains:
 
@@ -38,13 +38,13 @@ The goal of this project is to simulate a corporate-grade end-to-end data analyt
 
       - Connection to SQL Database
   
-3. **Load the data from Python notebook into MySQL/PostgreSQL/MS SQL Server**
+3. **Load the data from Python file into MySQL/PostgreSQL/MS SQL Server**
 
       - Create a database in SQL
 
       - Run Python code to load data into SQL database
   
-      - Open **customer_behavior_sql_queries.sql**
+      - Open **Pg Local.session.sql**
   
       - Answer Business Questions using SQL Queries 
       
@@ -54,21 +54,4 @@ The goal of this project is to simulate a corporate-grade end-to-end data analyt
    
       - Create interactive dashboard in Power BI
   
-6. **Create Project Report and Presentation**
-
-      - Create project report
-   
-      - Build presentation deck using Gamma AI
-  
-7. **Follow along with the YouTube video for full walkthrough. 👨‍💼**
-
-
-## 📜 License
-
-MIT — feel free to fork, star, and use in your portfolio.
-
-## 👨‍💻 About the Author
-Hey, I’m Amlan Mohanty, a Data Analyst & Content Creator.
-I break down complex data topics into simple, practical content that actually helps you land a job.
-
 
