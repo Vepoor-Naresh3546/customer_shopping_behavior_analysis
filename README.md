@@ -17,8 +17,7 @@ The goal of this project is to simulate a corporate-grade end-to-end data analyt
 
 ✅ Report and Presentation: Write a clear project report summarizing your key findings and business recommendations. Prepare a presentation that visually communicates insights and actionable recommendations to stakeholders.
 
-![Project Workflow](https://github.com/user-attachments/assets/8bbd5dc9-eb6c-40c1-8f19-c08b4107f654)
-
+https://github.com/Vepoor-Naresh3546/customer_shopping_behavior_analysis.git
 ## 🛠️ How to Use This Project
 
 1. **Clone the repository**
